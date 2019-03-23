@@ -37,11 +37,10 @@ draw_hist(PiValueList, u"µ" + " = " + str(PiMean)+", "+ u"σ" + " = " + str(PiS
 
 ## Second: Increase the times of calculation to see how 𝜎 changes (every time with 1000 points)
 SigmaList1 = []
-NtimeList = []
-for i in range(10):
-    Ntimes = (i+1)*300
+NtimeList = [10, 20, 40, 80, 160, 240, 320, 400, 500, 600, 700, 800, 900, 1000, 1200, 1500]
+for i in NtimeList:
+    Ntimes = i
     PiValueListNew = []
-    NtimeList.append(Ntimes)
 
     for j in range(Ntimes):
         Naccept = 0
