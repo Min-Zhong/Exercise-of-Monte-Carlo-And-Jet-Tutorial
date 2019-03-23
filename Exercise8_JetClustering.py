@@ -24,8 +24,8 @@ JetMassList = []
 Ntime = 500
 
 # Set the values of n and R
-n = 1.0
-R = 0.1
+n = -1.0
+R = 0.5
 
 class Particle(object):
     
@@ -114,11 +114,20 @@ def DeltaCalculate(par1, par2):    # Calculate Delta_ij
     return Delta_ij
 
 def draw_hist(myList, Title, Xlabel, Ylabel, Nbins, Xmin, Xmax, Ymin, Ymax):
-    plt.hist(myList, bins=20)
+    plt.hist(myList, bins=Nbins)
+    plt.xlabel(Xlabel)
+    plt.xlim(Xmin, Xmax)
+    plt.ylabel(Ylabel)
+    #plt.ylim(Ymin, Ymax)
+    plt.title(Title)
+    plt.show()
+    
+def draw_hist_test(myList, Title, Xlabel, Ylabel, Nbins, Xmin, Xmax, Ymin, Ymax):
+    plt.hist(myList, bins=Nbins)
     plt.xlabel(Xlabel)
     #plt.xlim(Xmin, Xmax)
     plt.ylabel(Ylabel)
-    plt.ylim(Ymin, Ymax)
+    #plt.ylim(Ymin, Ymax)
     plt.title(Title)
     plt.show()
 
@@ -127,7 +136,8 @@ def draw_hist(myList, Title, Xlabel, Ylabel, Nbins, Xmin, Xmax, Ymin, Ymax):
 #####################################
 
 for iloop in range(Ntime):
-    
+    if iloop % 50 == 0:
+        print (iloop, " finished")
     # Now we can generate two initial particles
     ParticleList = []
     Par01, Par02 = PartonGenerate()
@@ -292,6 +302,12 @@ for iloop in range(Ntime):
   
     JetNumberList.append(Njet)
     JetMassList.append(Mass)
-    
-draw_hist(JetNumberList, 'Number of Jet Distribution', 'Number of Jet', 'Times', 70, 0, 140, 0.0, 30.0)
-draw_hist(JetMassList, 'Jet "Pseudo Mass" Distribution', 'Pseudo Mass', 'Times', 50, 0, 10, 0.0, 50.0)
+
+JetMassListNew = []
+for i in range(Ntime):
+    if JetMassList[i] < 700.0:
+        JetMassListNew.append(JetMassList[i])
+
+draw_hist(JetNumberList, 'Number of Jet Distribution', 'Number of Jet', 'Times', 40, 0, 80, 0.0, 50.0)
+draw_hist(JetMassListNew, 'Jet "Pseudo Mass" Distribution', 'Pseudo Mass', 'Times', 35, 0, 700, 0.0, 300.0)
+#draw_hist(JetMassList, 'Jet "Pseudo Mass" Distribution', 'Pseudo Mass', 'Times', 35, 0, 700, 0.0, 300.0)
