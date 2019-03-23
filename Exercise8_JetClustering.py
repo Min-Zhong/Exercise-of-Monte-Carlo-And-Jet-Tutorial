@@ -21,7 +21,7 @@ alpha = 0.01
 # Set loop times
 JetNumberList = []
 JetMassList = []
-Ntime = 1000
+Ntime = 500
 
 # Set the values of n and R
 n = 1.0
@@ -118,7 +118,7 @@ def draw_hist(myList, Title, Xlabel, Ylabel, Nbins, Xmin, Xmax, Ymin, Ymax):
     plt.xlabel(Xlabel)
     #plt.xlim(Xmin, Xmax)
     plt.ylabel(Ylabel)
-    #plt.ylim(Ymin, Ymax)
+    plt.ylim(Ymin, Ymax)
     plt.title(Title)
     plt.show()
 
@@ -293,6 +293,5 @@ for iloop in range(Ntime):
     JetNumberList.append(Njet)
     JetMassList.append(Mass)
     
-print(JetMassList)
 draw_hist(JetNumberList, 'Number of Jet Distribution', 'Number of Jet', 'Times', 70, 0, 140, 0.0, 30.0)
 draw_hist(JetMassList, 'Jet "Pseudo Mass" Distribution', 'Pseudo Mass', 'Times', 50, 0, 10, 0.0, 50.0)
