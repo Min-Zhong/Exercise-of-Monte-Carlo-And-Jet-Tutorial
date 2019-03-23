@@ -1,4 +1,4 @@
-# Exercise-of-Monte-Carlo-And-Jet-Tutorial-
+# Exercise-of-Monte-Carlo-And-Jet-Tutorial
 This repository consists of the exercise codes for the MC and Jet Tutorial
 
 There are 8 exercise programs in total,  and each of the code can be run indepently
