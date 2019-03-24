@@ -83,13 +83,8 @@ def ParAdd(par1, par2):
 
 def PartonGenerate():
     # Firstly let's get a Eparton
-    iE0 = 0
-    while iE0 < 1:
-        u = random.random()
-        E0 = -math.log(math.e, (1.0-u))/alpha
-        if E0 >= 300:
-            continue
-        iE0 = iE0+1
+    u = random.random()
+    E0 = -np.log(1.0-u)/alpha
     theta0 = random.random()*math.pi
     phi0 = random.random()*math.pi*2.0    # According to the assumption, theta and phi are both distributed evenly
     
@@ -310,4 +305,3 @@ for i in range(Ntime):
 
 draw_hist(JetNumberList, 'Number of Jet Distribution', 'Number of Jet', 'Times', 40, 0, 80, 0.0, 50.0)
 draw_hist(JetMassListNew, 'Jet "Pseudo Mass" Distribution', 'Pseudo Mass', 'Times', 35, 0, 700, 0.0, 300.0)
-#draw_hist(JetMassList, 'Jet "Pseudo Mass" Distribution', 'Pseudo Mass', 'Times', 35, 0, 700, 0.0, 300.0)
