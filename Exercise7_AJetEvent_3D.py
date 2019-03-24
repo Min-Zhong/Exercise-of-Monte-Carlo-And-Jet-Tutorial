@@ -1,6 +1,7 @@
 # This program is used to produce a 3-dimension jet event which contains two showers
 import random
 import math
+import numpy as np
 import matplotlib.pyplot as plt
 from mpl_toolkits.mplot3d import Axes3D
 
@@ -56,12 +57,8 @@ class Particle(object):
 
 def PartonGenerate():
     # Firstly let's get a Eparton
-    iE0 = 0
-    while iE0 <= 0:
-        u = random.random()
-        E0 = -math.log(math.e, (1.0-u))/alpha
-        if E0 <= 500:            # Here is a set of boundry which can avoid too larger E0
-            iE0 = iE0+1
+    u = random.random()
+    E0 = -np.log(1.0-u)/alpha
     theta0 = random.random()*math.pi
     phi0 = random.random()*math.pi*2.0    # According to the assumption, theta and phi are both distributed evenly
     
